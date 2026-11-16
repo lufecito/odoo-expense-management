@@ -40,6 +40,8 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T9 | Configure pilot policy with Finance | S3 | — | pending | blocked by D3 |
 | T10 | Scaffold `ipam_expense` addon for the remaining gaps | S2 | — | pending | blocked by T5, T9 |
 | T11 | Run the pilot with real users and record per-criterion evidence | S3 | — | pending | blocked by T5, T9 |
+| T12 | Configure approver routing for pilot employees (department or `expense_manager_id`) | S3 | — | pending | Benjamín's employee record has neither |
+| T13 | Decide coverage of X1/X3: add a non-administrator user from another company, or accept reduced coverage | S3 | — | pending | both pilot users are in company 1; one is `admin` |
 
 ## Log
 
@@ -56,3 +58,13 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   not impossible.
 - **L5** — 2026-11-16: repository created. Documentation baseline committed.
   Nothing installed, nothing configured.
+- **L6** — 2026-11-16: pilot users confirmed as Luis Fontecilla (`admin`, id 2)
+  and Benjamín Abarzua (`benjamin.abarzua@airlife.com`, id 10). Rindegastos notice
+  period is 30 days. Readiness check found: both users in company 1; Benjamín's
+  employee record (id 71) has no department, expense manager or parent; 72 of 73
+  employees have no department and only one has an expense manager. Consequence:
+  P2 cannot run until routing is configured, and X1/X3 cannot be validated with
+  these two users alone.
+- **L7** — 2026-11-16: sequencing recorded — pilot passes first, notice second,
+  30 days of parallel operation third. The notice period is not a deadline to
+  migrate faster.

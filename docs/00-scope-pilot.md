@@ -134,7 +134,30 @@ The pilot cannot start until:
 4. The list of real pilot users is agreed (employees, approvers, finance).
 5. Licensing implications for those users are confirmed by the Odoo contact.
 
-## 7. Pilot size
+## 7. Pilot participants
 
-One company, one department, one approval level, 5–10 employees, 4 weeks. No
-other company participates until X1 passes.
+Two users, one company (`Ipam Technology S.A.`), one approval level, 4 weeks.
+
+| User | Odoo user | Role in pilot | Verified state |
+| --- | --- | --- | --- |
+| Luis Fontecilla | id 2, login `admin` | Renderer and configuration | Administrator on production |
+| Benjamín Abarzua | id 10, `benjamin.abarzua@airlife.com` | Renderer and approver | Active, internal, no department, no expense manager, no parent |
+
+### Readiness gaps found
+
+1. **The pilot includes the production administrator.** Login `admin` bypasses
+   record rules and ACLs. Testing with it proves nothing about X1 or X3. A
+   third, non-administrator user is required to validate either.
+2. **Approval routing is unconfigured.** Benjamín's employee record (id 71) has
+   no department, no `expense_manager_id` and no parent. 72 of 73 employees have
+   no department, and only one employee has an expense manager. Until that is
+   set, P2 cannot be executed at all.
+3. **Company isolation cannot be tested with these two users.** Both belong to
+   company 1. X1 needs a user from another company.
+
+### Coverage decision required
+
+With two users the pilot can validate P1, P3, P4, P5 and P6. It **cannot**
+validate X1, X3, or the self-approval rule in P2. Options: add one
+non-administrator user from another company, or explicitly accept reduced
+coverage and mark those criteria as untested in the exit report.
