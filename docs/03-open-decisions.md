@@ -4,7 +4,7 @@ Each item blocks something concrete. Owner and answer are recorded when known.
 
 | ID | Decision | Owner | Blocks | Status |
 | --- | --- | --- | --- | --- |
-| D1 | Where the pilot is tested: second database on the same host, separate instance, or local Odoo 18 | Host administrator | Everything | Open |
+| D1 | Where the pilot is tested: second database on the same host, separate instance, or local Odoo 18. **Local sandbox declined 2026-11-16: the system is not to be modified** | Host administrator | Everything | Staging only |
 | D2 | Addon deployment and rollback procedure | Host administrator | Any custom module | Open |
 | D3 | Expense policy: categories, taxes, accounts, analytic dimensions, approval limits | Finance | P1, P2, P3 | Open |
 | D4 | Who approves what, and whether one level is enough for the pilot | Finance, HR | P2 | Open |

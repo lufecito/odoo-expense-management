@@ -81,3 +81,7 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   privileges and would still not reproduce the Chilean localization, SII modules
   or 15-company setup. Formal staging request written instead:
   `docs/04-staging-request.md`.
+- **L10** — 2026-11-16: local sandbox rejected by the user — the workstation system
+  is not to be modified. No Docker, no PostgreSQL, no package installation. Staging
+  from the host administrator is the only path to a testable environment. No further
+  technical work is possible until T5 closes.
