@@ -118,9 +118,13 @@ is reconcilable against the accounting entries.
 
 | Outcome | Condition |
 | --- | --- |
-| **Proceed to rollout** | All of P1–P4 and X1–X3 pass; P5 and P6 pass or have an approved workaround with a dated plan |
+| **Proceed, single company** | P1–P6 pass; X2 passes; X3 passes on the positive path |
+| **Blocked for multi-company** | X1 and the X3 negative path are untested. Both must pass before a second company adopts the flow and before Rindegastos notice is given |
 | **Partial replacement** | P1–P4 pass; P5/P6 fail; Rindegastos retained only for funds, or replaced by a different tool |
-| **No-go** | P3 or X1 fails, or deployment/rollback cannot be demonstrated |
+| **No-go** | P3 fails, deployment or rollback cannot be demonstrated, or a later X1 test fails |
+
+Reduced coverage was accepted on 2026-11-16. It does not lower the bar: it moves
+X1 and the negative X3 checks to a named gate before cancellation.
 
 ## 6. Preconditions
 
@@ -155,9 +159,17 @@ Two users, one company (`Ipam Technology S.A.`), one approval level, 4 weeks.
 3. **Company isolation cannot be tested with these two users.** Both belong to
    company 1. X1 needs a user from another company.
 
-### Coverage decision required
+### Coverage decision (accepted 2026-11-16)
 
-With two users the pilot can validate P1, P3, P4, P5 and P6. It **cannot**
-validate X1, X3, or the self-approval rule in P2. Options: add one
-non-administrator user from another company, or explicitly accept reduced
-coverage and mark those criteria as untested in the exit report.
+Reduced coverage accepted. The pilot validates P1–P6 and X2, plus the positive
+path of X3 (an approver who is not the renderer approves and refuses). It does
+**not** validate:
+
+| Untested | Why | Consequence |
+| --- | --- | --- |
+| X1 company isolation | Both pilot users belong to company 1 | Must pass before a second company adopts the flow, and before Rindegastos is cancelled |
+| X3 negative path | `admin` bypasses record rules | A non-administrator must attempt forbidden reads and approvals before multi-company use |
+| P2 self-approval rule | Only one approver exists | Verified by code review and ACL inspection by a second person, not by execution |
+
+These are **deferred gates, not waived requirements**. The pilot may conclude
+"ready for one company"; it may not conclude "ready for the group".

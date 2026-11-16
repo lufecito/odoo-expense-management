@@ -15,6 +15,8 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 - **S3** — Pilot covers P1 capture, P2 approval, P3 accounting, P4
   reimbursement, P5 advances, P6 petty cash, plus X1 company isolation, X2
   traceability, X3 role separation. Full criteria in `docs/00-scope-pilot.md`.
+  Coverage reduced on 2026-11-16: X1 and the negative X3 path are deferred to a
+  gate before multi-company rollout and before Rindegastos notice.
 - **S4** — Corporate cards, automated payments, WhatsApp, AI scoring, multi-country
   and historical migration are out of pilot scope.
 - **S5** — Nothing is installed in production until a non-production database
@@ -41,7 +43,7 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T10 | Scaffold `ipam_expense` addon for the remaining gaps | S2 | — | pending | blocked by T5, T9 |
 | T11 | Run the pilot with real users and record per-criterion evidence | S3 | — | pending | blocked by T5, T9 |
 | T12 | Configure approver routing for pilot employees (department or `expense_manager_id`) | S3 | — | pending | Benjamín's employee record has neither |
-| T13 | Decide coverage of X1/X3: add a non-administrator user from another company, or accept reduced coverage | S3 | — | pending | both pilot users are in company 1; one is `admin` |
+| T13 | Decide coverage of X1/X3 | S3 | inline | done | reduced coverage accepted; gaps recorded as pre-cancellation gates |
 
 ## Log
 
@@ -68,3 +70,8 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 - **L7** — 2026-11-16: sequencing recorded — pilot passes first, notice second,
   30 days of parallel operation third. The notice period is not a deadline to
   migrate faster.
+- **L8** — 2026-11-16: reduced pilot coverage accepted by the user. X1, the
+  negative X3 path and the P2 self-approval rule are recorded as untested, each
+  with its consequence. They become explicit gates before multi-company rollout
+  and before notice is given to Rindegastos. Exit criteria rewritten so a
+  success cannot be declared for the group on single-company evidence.
