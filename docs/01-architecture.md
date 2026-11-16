@@ -27,34 +27,47 @@ objects that never post to accounting. Expenses are the opposite case.
 
 ## Module set
 
-| Layer | Component | Origin |
-| --- | --- | --- |
-| Base | `hr_expense` | Odoo core, already installed |
-| Multi-level approval | `hr_expense_tier_validation` | OCA 18.0, Beta |
-| Advances and clearing | `hr_expense_advance_clearing` | OCA 18.0, Beta |
-| Petty cash | `hr_expense_petty_cash` | OCA 18.0, Beta |
-| Policy gaps | `ipam_expense` (to build) | this repository |
+| Layer | Component | Origin | Status |
+| --- | --- | --- | --- |
+| Base | `hr_expense` | Odoo core, already installed | Pilot |
+| Double operational approval | `ipam_expense` (to build) | this repository | Pilot — main risk |
+| Policy rules | `ipam_expense` (to build) | this repository | Pilot, minimal |
+| Reporting and weekly view | `ipam_expense` + native views | this repository | Pilot |
+| Multi-level approval via OCA tiers | `hr_expense_tier_validation` | OCA 18.0, Beta | **Not selected** |
+| Advances and clearing | `hr_expense_advance_clearing` | OCA 18.0, Beta | Deferred (C2) |
+| Petty cash | `hr_expense_petty_cash` | OCA 18.0, Beta | Deferred (C2) |
 
-All three OCA modules are published for 18.0 and marked Beta. They are candidates
-for testing, not proven dependencies.
+### Why not `hr_expense_tier_validation`
+
+The business process needs two **operational stages** with their own structured
+audit fields (first confirmer, final approver, comments, return reason) and a rule
+that a correction after final approval restarts the first stage. A generic tier
+engine can validate that N approvals exist; it does not model two business stages
+with distinct meaning and restart semantics.
+
+Tier validation remains a candidate for simpler approval policies inside a stage,
+not for the two-stage chain.
 
 ## Proposed addon boundary
 
 `ipam_expense` should only contain what the layers above do not provide:
 
+- The two-stage operational approval: states, transitions, structured audit fields,
+  restart rule after a correction.
+- Weekly report grouping rules, naming sequence and the weekly view with saved
+  filters.
 - Company-scoped policy rules: limits by category, required fields, submission
-  windows.
-- Custom report statuses for finance tracking, if the standard state machine
-  proves insufficient.
+  windows, duplicate warnings.
+- Custom expense fields from the specification: receipt number, issuer VAT, source
+  channel, source message id, operating week.
 - Any SII or document validation not covered by the installed localization.
-- Integration glue, only if a specific system is in scope.
 
 It must not:
 
 - Define a second expense or report model.
 - Create a parallel employee or person table.
-- Store approvals outside `base_tier_validation`.
 - Replace the accounting entry with an export file.
+- Implement advances or petty cash (deferred, C2).
 
 ## Naming and structure
 

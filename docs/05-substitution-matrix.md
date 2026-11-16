@@ -18,7 +18,7 @@ Status values:
 | Rindegastos function | Odoo 18 candidate | Status | Evidence / gap |
 | --- | --- | --- | --- |
 | Create expenses and reports, unlimited | `hr.expense`, `hr.expense.sheet` | Pilot P1 | Zero records today; unproven |
-| Custom approval flows, unlimited | `hr.expense` approver + OCA `hr_expense_tier_validation` | Pilot P2 | OCA module is Beta; adapter unverified |
+| Custom approval flows, unlimited | `ipam_expense` two-stage approval (not OCA tiers) | Pilot P2a/P2b | Custom logic; largest risk |
 | Automatic duplicate detection | `duplicate_expense_ids`, `same_receipt_expense_ids` | Pilot P1 | Native fields exist; tolerance undefined (D15) |
 | Custom fields | `ir.model.fields`, Studio | Assumed | Not tested |
 | Multi-currency | `hr.expense.currency_id` + rates | Pilot P3 | Rate source must be documented |
@@ -42,9 +42,9 @@ Status values:
 
 | Rindegastos | Odoo 18 candidate | Status | Note |
 | --- | --- | --- | --- |
-| Petty cash and funds | OCA `hr_expense_petty_cash` | Pilot P6 | Beta; balance vs ledger is the real test |
-| Funds to be accounted | OCA `hr_expense_advance_clearing` | Pilot P5 | Three scenarios specified |
-| Fund requests and authorization | Odoo approvals / manual | Build | Rindegastos separates request from delivery; we must too |
+| Petty cash and funds | OCA `hr_expense_petty_cash` | Deferred | Removed from pilot (C2); blocks cancellation if funds are in use |
+| Funds to be accounted | OCA `hr_expense_advance_clearing` | Deferred | Removed from pilot (C2); Accounting must approve the treatment |
+| Fund requests and authorization | None selected | Deferred | Depends on the advances decision |
 | Reimbursement | `account.payment` from sheet | Pilot P4 | Closure level defined by Treasury (D11) |
 | Rindepay (payment execution) | None native | Deferred | Requires bank integration, not an addon |
 | Card reconciliation (Concil-IA) | Bank sync + reconciliation models | Deferred | Different mechanism; must not be claimed as equivalent |

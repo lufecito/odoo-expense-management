@@ -12,11 +12,10 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 - **S2** — Expense, report, employee and journal models are inherited from
   `hr_expense`, never duplicated. Parallel models for the same concepts are
   rejected.
-- **S3** — Pilot covers P1 capture, P2 approval, P3 accounting, P4
-  reimbursement, P5 advances, P6 petty cash, plus X1 company isolation, X2
-  traceability, X3 role separation. Full criteria in `docs/00-scope-pilot.md`.
-  Coverage reduced on 2026-11-16: X1 and the negative X3 path are deferred to a
-  gate before multi-company rollout and before Rindegastos notice.
+- **S3** — Pilot covers P1 registration and weekly report, P2a first confirmation,
+  P2b final approval, P3 accounting, P4 payment closure, P7 reporting, P8 exit,
+  plus X1 company isolation, X2 traceability and X3 role separation. Full criteria
+  in `docs/00-scope-pilot.md`. P5 and P6 were retired on 2026-11-16 (C2).
 - **S4** — Corporate cards, automated payments, WhatsApp, AI scoring, multi-country
   and historical migration are out of pilot scope.
 - **S5** — Nothing is installed in production until a non-production database
@@ -40,6 +39,13 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   validations and the test plan. Where the pilot scope contradicts it, the conflict
   is recorded in §7 of `docs/00-scope-pilot.md` and resolved by a named decision,
   never silently.
+- **S13** — The pilot is **technical**, run by two participants. Its maximum
+  conclusion is "technically viable"; it cannot certify operational readiness nor
+  justify cancellation. The operational pilot with the five-role chain is a
+  separate, mandatory phase.
+- **S14** — The two-stage operational approval is implemented as custom states and
+  server-enforced transitions in `ipam_expense`, not with a generic tier engine.
+  A correction after final approval restarts the first stage.
 
 ## Tasks
 
@@ -68,9 +74,11 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T21 | Execute X1 and negative X3 with real non-admin users | S3 | — | pending | needs third user; gate before multi-company |
 | T22 | Import the existing business specification as the authoritative source | S12 | inline | done | `docs/06-business-spec.md` |
 | T23 | Record conflicts between pilot scope and business spec | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
-| T24 | Resolve C1: who really participates in the pilot | S12 | — | pending | D17 |
-| T25 | Resolve C2: advances and petty cash in or out of the first delivery | S12 | — | pending | D20 |
-| T26 | Resolve C5 and add the two-level approval flow to the pilot | S12 | — | pending | D18 |
+| T24 | Resolve C1: who really participates in the pilot | S12 | inline | done | technical pilot, two participants |
+| T25 | Resolve C2: advances and petty cash in or out of the first delivery | S12 | inline | done | deferred; P5/P6 retired |
+| T26 | Resolve C5 and add the two-level approval flow to the pilot | S12 | inline | done | P2a/P2b, two-stage custom states |
+| T27 | Resolve C3, C4, C6 in scope and acceptance criteria | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
+| T28 | Confirm whether funds por rendir are used today | S12 | — | pending | if yes, cancellation is blocked |
 
 ## Log
 
@@ -128,6 +136,14 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   D13 question is now partially answered by evidence: WhatsApp intake is manual by a
   digitizer, there are two operational approval levels, and advances are excluded
   from the first phase by the business owner of the process.
+- **L14** — 2026-11-16: the six conflicts are resolved. C1 technical pilot with two
+  participants; C2 advances and petty cash deferred and their process IDs retired;
+  C3 manual WhatsApp intake in scope; C4 archive instead of migration; C5 replaced
+  single-level approval with P2a/P2b custom states; C6 weekly grouping in scope.
+  Consequences recorded: the pilot cannot claim operational readiness, cancellation
+  stays blocked while funds or history are uncovered, and the two-stage approval is
+  now the largest technical risk. Rejected `hr_expense_tier_validation` for the
+  chain because it cannot express two business stages with restart semantics.
 - **L10** — 2026-11-16: local sandbox rejected by the user — the workstation system
   is not to be modified. No Docker, no PostgreSQL, no package installation. Staging
   from the host administrator is the only path to a testable environment. No further
