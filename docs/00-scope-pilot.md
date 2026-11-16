@@ -208,7 +208,26 @@ The pilot cannot start until:
 7. Rindegastos grants an export of history and open items, or the export is
    produced before notice is given (D14).
 
-## 7. Pilot participants
+## 7. Conflicts with the business specification
+
+`docs/06-business-spec.md` describes the real process: Teresa as digitizer,
+Jefatura SAT as first confirmation, Gabriela as final approval, Contabilidad for
+posting, payment and reconciliation, and 3–5 technicians. This section records
+where the pilot scope disagrees with it, so neither document silently wins.
+
+| # | Conflict | Business spec | This document | Decision |
+| --- | --- | --- | --- | --- |
+| C1 | Who participates in the pilot | Teresa, Jefatura SAT, Gabriela, Contabilidad, 3–5 technicians | Luis and Benjamín | **Open — D17** |
+| C2 | Advances and petty cash | Explicitly out of the first phase until Accounting approves the treatment | P5 and P6 are in the pilot | **Open — D20** |
+| C3 | WhatsApp | Manual intake by Teresa in phase 1; automation later | Excluded from pilot | Compatible, but C3 confirms manual intake is **in** scope |
+| C4 | History | Closed reports not migrated; open ones only if approved | P8 requires archive and open-item control | P8 governs; the archive does not require re-posting |
+| C5 | Approval model | Two operational levels plus accounting, with custom states | P2 tests one level | **Open — D18** |
+| C6 | Weekly consolidation | One report per technician, company and payment mode, weekly | Not modelled | Must be added to P1/P7 before the pilot |
+
+Until C1, C2 and C5 are resolved, the pilot as described here cannot be executed:
+the roles it assumes are not the roles the process has.
+
+## 8. Pilot participants
 
 Two users, one company (`Ipam Technology S.A.`), one approval level, 4 weeks.
 

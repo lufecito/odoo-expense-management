@@ -20,6 +20,10 @@ Each item blocks something concrete. Owner and answer are recorded when known.
 | D14 | Who verifies the Rindegastos export for completeness, and when | Management | P8, notice date | Open |
 | D15 | Tolerance that defines a duplicate expense | Finance | P1 | Open |
 | D16 | Capture-effort target, measured against the current Rindegastos flow | Finance, pilot users | P1 | Open |
+| D17 | Who actually participates: Luis and Benjamín, or Teresa, Jefatura SAT, Gabriela, Contabilidad and 3–5 technicians | Management | P1, P2, everything | Open |
+| D18 | Who integrates Jefatura SAT, who replaces them, and whether the pilot tests both approval levels | Management, SAT | P2, C5 | Open |
+| D19 | Weekly close: day, time, and who consolidates | Finance, SAT | P1, P7, C6 | Open |
+| D20 | Advances and petty cash: in the first delivery or deferred as the business spec states | Finance, Accounting | P5, P6, C2 | Open |
 
 ## Notes
 
@@ -32,7 +36,7 @@ Each item blocks something concrete. Owner and answer are recorded when known.
   the correct sequence is: pilot passes, then notice, then 30 days of parallel
   operation. Not the reverse.
 - The pilot user list is confirmed (Luis Fontecilla, Benjamín Abarzua) but its
-  coverage is not sufficient for X1 and X3. See `docs/00-scope-pilot.md` §7.
+  coverage is not sufficient for X1 and X3. See `docs/00-scope-pilot.md` §8.
 - D11 matters more than it looks. "Paid" in Odoo can mean three different things.
   If Treasury closes reports at *registered* while the bank transfer never
   happens, the pilot will look green and employees will not be paid.
@@ -41,5 +45,12 @@ Each item blocks something concrete. Owner and answer are recorded when known.
   not a disposition.
 - D12 and D14 are the exit gate. Notice cannot be given while history and open
   items are unsecured, regardless of how well the pilot performs.
+- D17 is the most consequential open decision. The scope assumed two technical
+  participants; the business specification assumes a five-role operational chain.
+  Both cannot be true. Reporting "pilot passed" against the wrong users would be
+  the worst possible outcome.
+- D20 is a scope reduction, not a technical question. The business specification
+  already excludes advances from the first phase; this project's P5/P6 contradict
+  it. Deferring them lowers risk and shortens the pilot.
 - D6 has a cost consequence that is easy to underestimate: digitization is
   charged per document, and volume grows with every receipt, not with every user.

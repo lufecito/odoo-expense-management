@@ -15,6 +15,7 @@ existing Odoo 18 Enterprise instance (`ipam-master`).
 | `docs/03-open-decisions.md` | Decisions blocked on owners outside engineering |
 | `docs/04-staging-request.md` | Formal staging request to the host administrator |
 | `docs/05-substitution-matrix.md` | Rindegastos function by function, with disposition |
+| `docs/06-business-spec.md` | Imported business specification (authoritative for process and roles) |
 | `odd/tasks/expense-management.md` | Working feature document and log |
 
 ## Ground rules

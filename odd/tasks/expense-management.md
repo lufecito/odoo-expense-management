@@ -36,6 +36,10 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   reconciled are distinct facts and are never treated as synonyms.
 - **S11** — Renderer effort is measured against the current tool. A cheaper cycle
   that takes three times longer to submit is not a replacement.
+- **S12** — `docs/06-business-spec.md` is authoritative for process, roles, states,
+  validations and the test plan. Where the pilot scope contradicts it, the conflict
+  is recorded in §7 of `docs/00-scope-pilot.md` and resolved by a named decision,
+  never silently.
 
 ## Tasks
 
@@ -58,10 +62,15 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T15 | Rewrite P4 with registered/executed/reconciled levels | S10 | inline | done | `docs/00-scope-pilot.md` §4 |
 | T16 | Add P7 reporting and P8 exit/cutover to scope | S9 | inline | done | `docs/00-scope-pilot.md` §4 |
 | T17 | Add duplicate, OCR correction, refusal loop and effort criteria | S11 | inline | done | `docs/00-scope-pilot.md` §4 P1–P2 |
-| T18 | Correct the admin-bypass claim: verify instead of assert | S3 | inline | done | `docs/00-scope-pilot.md` §4 X, §7 |
+| T18 | Correct the admin-bypass claim: verify instead of assert | S3 | inline | done | `docs/00-scope-pilot.md` §4 X, §8 |
 | T19 | Confirm which Rindegastos functions are actually used (D13) | S8 | — | pending | owner: Management, Finance |
 | T20 | Obtain and verify the Rindegastos export (D12, D14) | S9 | — | pending | blocked by D12/D14 |
 | T21 | Execute X1 and negative X3 with real non-admin users | S3 | — | pending | needs third user; gate before multi-company |
+| T22 | Import the existing business specification as the authoritative source | S12 | inline | done | `docs/06-business-spec.md` |
+| T23 | Record conflicts between pilot scope and business spec | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
+| T24 | Resolve C1: who really participates in the pilot | S12 | — | pending | D17 |
+| T25 | Resolve C2: advances and petty cash in or out of the first delivery | S12 | — | pending | D20 |
+| T26 | Resolve C5 and add the two-level approval flow to the pilot | S12 | — | pending | D18 |
 
 ## Log
 
@@ -107,6 +116,18 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   is now a verification step instead of an asserted fact; every deferred function
   requires a written disposition. Substitution matrix added at
   `docs/05-substitution-matrix.md`.
+- **L12** — 2026-11-16: found an existing business specification and flow diagrams at
+  `Escritorio/Airlife/Reemplazo Rindegastos/`. It describes the real process — Teresa
+  as digitizer, Jefatura SAT as first confirmation, Gabriela as final approval,
+  Contabilidad for posting and payment, weekly consolidation per technician/company/
+  payment mode — and contradicts this project's assumptions. Imported as
+  `docs/06-business-spec.md` and made authoritative. Six conflicts recorded (C1–C6);
+  C1, C2 and C5 block execution. The `exportar_flujo_contable.ps1` in that folder
+  only draws the diagram: no Rindegastos→Odoo export tooling exists yet.
+- **L13** — 2026-11-16: advance made without touching Odoo or the workstation. The
+  D13 question is now partially answered by evidence: WhatsApp intake is manual by a
+  digitizer, there are two operational approval levels, and advances are excluded
+  from the first phase by the business owner of the process.
 - **L10** — 2026-11-16: local sandbox rejected by the user — the workstation system
   is not to be modified. No Docker, no PostgreSQL, no package installation. Staging
   from the host administrator is the only path to a testable environment. No further
