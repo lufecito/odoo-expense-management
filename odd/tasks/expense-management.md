@@ -56,12 +56,12 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T3 | Pilot scope and acceptance criteria | S3, S4 | inline | done | `docs/00-scope-pilot.md` |
 | T4 | Open decisions register | S5 | inline | done | `docs/03-open-decisions.md` |
 | T5 | Resolve D1/D2: staging and deployment procedure | S5 | blocked | request prepared | `docs/04-staging-request.md`, to be sent by owner |
-| T6 | Evaluate `hr_expense_tier_validation` on 18.0 | S7 | — | pending | blocked by T5 |
-| T7 | Evaluate `hr_expense_advance_clearing` (three clearing scenarios) | S7 | — | pending | blocked by T5 |
-| T8 | Evaluate `hr_expense_petty_cash` | S7 | — | pending | blocked by T5 |
+| T6 | ~~Evaluate `hr_expense_tier_validation`~~ | S7 | — | dropped | rejected by C5: cannot model two stages |
+| T7 | ~~Evaluate `hr_expense_advance_clearing`~~ | S7 | — | deferred | C2: advances out of first delivery |
+| T8 | ~~Evaluate `hr_expense_petty_cash`~~ | S7 | — | deferred | C2: petty cash out of first delivery |
 | T9 | Configure pilot policy with Finance | S3 | — | pending | blocked by D3 |
 | T10 | Scaffold `ipam_expense` addon for the remaining gaps | S2 | — | pending | blocked by T5, T9 |
-| T11 | Run the pilot with real users and record per-criterion evidence | S3 | — | pending | blocked by T5, T9 |
+| T11 | Run the technical pilot and record per-criterion evidence | S3 | — | pending | blocked by T5, T9 |
 | T12 | Configure approver routing for pilot employees (department or `expense_manager_id`) | S3 | — | pending | Benjamín's employee record has neither |
 | T13 | Decide coverage of X1/X3 | S3 | inline | done | reduced coverage accepted; gaps recorded as pre-cancellation gates |
 | T14 | Substitution matrix against the Rindegastos catalogue | S8 | inline | done | `docs/05-substitution-matrix.md` |
@@ -79,6 +79,7 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T26 | Resolve C5 and add the two-level approval flow to the pilot | S12 | inline | done | P2a/P2b, two-stage custom states |
 | T27 | Resolve C3, C4, C6 in scope and acceptance criteria | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
 | T28 | Confirm whether funds por rendir are used today | S12 | — | pending | if yes, cancellation is blocked |
+| T29 | Decide how P8 data is obtained: build an exporter or archive read-only | S9 | — | pending | no tooling exists today |
 
 ## Log
 
@@ -144,6 +145,9 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   stays blocked while funds or history are uncovered, and the two-stage approval is
   now the largest technical risk. Rejected `hr_expense_tier_validation` for the
   chain because it cannot express two business stages with restart semantics.
+- **L15** — 2026-11-16: task table cleaned after the resolutions. T6 dropped (tier
+  validation rejected), T7/T8 deferred (advances and petty cash), T11 reworded to
+  technical pilot, T29 added for the P8 data route.
 - **L10** — 2026-11-16: local sandbox rejected by the user — the workstation system
   is not to be modified. No Docker, no PostgreSQL, no package installation. Staging
   from the host administrator is the only path to a testable environment. No further
