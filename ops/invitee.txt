@@ -1,3 +1,0 @@
-# GitHub username to invite to lufecito/odoo-expense-management
-# Candidate derived from the email handle. Alternative: Tabarnakle
-benjabarzua

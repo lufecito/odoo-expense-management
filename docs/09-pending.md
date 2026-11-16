@@ -63,16 +63,19 @@ read-only archive instead of migration (D12).
 | T33 | Build department or expense-manager routing |
 | T20 | Obtain and verify the Rindegastos history export |
 
-## 6. Scheduled automation
+## 6. Repository access
 
-| When | What | Where |
-| --- | --- | --- |
-| 2026-11-17 09:00 (America/Santiago) | Attempt to invite `benjamin.abarzua@airlife.com` to this repository and log the result | systemd user timer `odoo-expense-invite.timer` |
+No invitation is scheduled or pending. The automated invitation was cancelled on
+2026-11-16 by the owner, because the corporate email does not resolve to a single
+GitHub account and inviting a guessed username was not acceptable.
 
-Two accounts match the person on GitHub: `benjabarzua` (full name Benjamín Abraham
-Abarzua Ehijo) and `Tabarnakle` (Benjamin Abarzua, Santiago). The email handle
-matches the first one, which is the configured default. If it is wrong, change
-`ops/invitee.txt` before 09:00 or revoke the invitation afterwards.
+Two accounts match the person on GitHub: `benjabarzua` and `Tabarnakle`. If access
+is needed later, confirm the username with the person and invite manually:
+
+```sh
+gh api -X PUT /repos/lufecito/odoo-expense-management/collaborators/<username> \
+  -f permission=push
+```
 
 ## 7. Corrected objective for the current phase
 

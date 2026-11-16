@@ -19,7 +19,6 @@ existing Odoo 18 Enterprise instance (`ipam-master`).
 | `docs/07-resolved-findings.md` | Evidence-based resolutions and what remains human-owned |
 | `docs/08-roles.md` | Named owners, data-entry model and role gaps |
 | `docs/09-pending.md` | Everything still open, with owners |
-| `ops/` `scripts/` | Scheduled collaborator invitation |
 | `odd/tasks/expense-management.md` | Working feature document and log |
 
 ## Ground rules
