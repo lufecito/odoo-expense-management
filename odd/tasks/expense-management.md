@@ -26,6 +26,16 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 - **S7** — Assumption to validate, not a requirement: the OCA 18.0 modules for
   tier validation, advances and petty cash are usable. They are Beta; the pilot
   decides.
+- **S8** — Every Rindegastos function in use has a written disposition: replaced,
+  deferred with a named alternative, or accepted as a loss. Recorded in
+  `docs/05-substitution-matrix.md` and decided in D13.
+- **S9** — No notice is given to Rindegastos until P8 passes: history, open items,
+  approval records and paid amounts secured, and verified by someone other than
+  the exporter.
+- **S10** — Payment closure is defined by Treasury (D11). Registered, executed and
+  reconciled are distinct facts and are never treated as synonyms.
+- **S11** — Renderer effort is measured against the current tool. A cheaper cycle
+  that takes three times longer to submit is not a replacement.
 
 ## Tasks
 
@@ -44,6 +54,14 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T11 | Run the pilot with real users and record per-criterion evidence | S3 | — | pending | blocked by T5, T9 |
 | T12 | Configure approver routing for pilot employees (department or `expense_manager_id`) | S3 | — | pending | Benjamín's employee record has neither |
 | T13 | Decide coverage of X1/X3 | S3 | inline | done | reduced coverage accepted; gaps recorded as pre-cancellation gates |
+| T14 | Substitution matrix against the Rindegastos catalogue | S8 | inline | done | `docs/05-substitution-matrix.md` |
+| T15 | Rewrite P4 with registered/executed/reconciled levels | S10 | inline | done | `docs/00-scope-pilot.md` §4 |
+| T16 | Add P7 reporting and P8 exit/cutover to scope | S9 | inline | done | `docs/00-scope-pilot.md` §4 |
+| T17 | Add duplicate, OCR correction, refusal loop and effort criteria | S11 | inline | done | `docs/00-scope-pilot.md` §4 P1–P2 |
+| T18 | Correct the admin-bypass claim: verify instead of assert | S3 | inline | done | `docs/00-scope-pilot.md` §4 X, §7 |
+| T19 | Confirm which Rindegastos functions are actually used (D13) | S8 | — | pending | owner: Management, Finance |
+| T20 | Obtain and verify the Rindegastos export (D12, D14) | S9 | — | pending | blocked by D12/D14 |
+| T21 | Execute X1 and negative X3 with real non-admin users | S3 | — | pending | needs third user; gate before multi-company |
 
 ## Log
 
@@ -81,6 +99,14 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   privileges and would still not reproduce the Chilean localization, SII modules
   or 15-company setup. Formal staging request written instead:
   `docs/04-staging-request.md`.
+- **L11** — 2026-11-16: gaps against Rindegastos closed in scope, not in code.
+  Corrected: history is no longer assumed absent (P8 added); P4 now distinguishes
+  registered, executed and reconciled; P1 adds duplicate tolerance, OCR correction,
+  mobile capture, refusal loop and measured effort; P2 adds amount-based routing;
+  P3 adds multiple taxes and rate source; P7 and P8 are new; the admin-bypass claim
+  is now a verification step instead of an asserted fact; every deferred function
+  requires a written disposition. Substitution matrix added at
+  `docs/05-substitution-matrix.md`.
 - **L10** — 2026-11-16: local sandbox rejected by the user — the workstation system
   is not to be modified. No Docker, no PostgreSQL, no package installation. Staging
   from the host administrator is the only path to a testable environment. No further

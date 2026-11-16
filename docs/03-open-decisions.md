@@ -14,6 +14,12 @@ Each item blocks something concrete. Owner and answer are recorded when known.
 | D8 | Whether petty cash is currently used at all, and by how many holders | Finance | P6 | Open |
 | D9 | Rindegastos end date and per-user pricing. **Notice period confirmed: 30 days** | Management | Timing of any cancellation | Partially resolved |
 | D10 | Retention requirements for receipts and expense evidence | Legal, Finance | Data model, attachments | Open |
+| D11 | Which payment level closes a report: registered, executed or reconciled | Treasury | P4 | Open |
+| D12 | Retention period and archive format for Rindegastos history | Legal, Finance | P8 | Open |
+| D13 | Disposition of each deferred function: cards, WhatsApp, mileage, travel, signature, AI | Management, Finance | Cancellation scope | Open |
+| D14 | Who verifies the Rindegastos export for completeness, and when | Management | P8, notice date | Open |
+| D15 | Tolerance that defines a duplicate expense | Finance | P1 | Open |
+| D16 | Capture-effort target, measured against the current Rindegastos flow | Finance, pilot users | P1 | Open |
 
 ## Notes
 
@@ -27,5 +33,13 @@ Each item blocks something concrete. Owner and answer are recorded when known.
   operation. Not the reverse.
 - The pilot user list is confirmed (Luis Fontecilla, Benjamín Abarzua) but its
   coverage is not sufficient for X1 and X3. See `docs/00-scope-pilot.md` §7.
+- D11 matters more than it looks. "Paid" in Odoo can mean three different things.
+  If Treasury closes reports at *registered* while the bank transfer never
+  happens, the pilot will look green and employees will not be paid.
+- D13 is the decision that prevents a surprise: every function we defer is either
+  retained in Rindegastos, replaced elsewhere, or accepted as a loss. Silence is
+  not a disposition.
+- D12 and D14 are the exit gate. Notice cannot be given while history and open
+  items are unsecured, regardless of how well the pilot performs.
 - D6 has a cost consequence that is easy to underestimate: digitization is
   charged per document, and volume grows with every receipt, not with every user.
