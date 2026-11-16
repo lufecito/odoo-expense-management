@@ -69,8 +69,8 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T16 | Add P7 reporting and P8 exit/cutover to scope | S9 | inline | done | `docs/00-scope-pilot.md` §4 |
 | T17 | Add duplicate, OCR correction, refusal loop and effort criteria | S11 | inline | done | `docs/00-scope-pilot.md` §4 P1–P2 |
 | T18 | Correct the admin-bypass claim: verify instead of assert | S3 | inline | done | `docs/00-scope-pilot.md` §4 X, §8 |
-| T19 | Confirm which Rindegastos functions are actually used (D13) | S8 | — | pending | owner: Management, Finance |
-| T20 | Obtain and verify the Rindegastos export (D12, D14) | S9 | — | pending | blocked by D12/D14 |
+| T19 | Confirm which Rindegastos functions are actually used (D13) | S8 | — | partly done | funds and WhatsApp confirmed in use; cards unknown |
+| T20 | Obtain and verify the Rindegastos export (D12, D14) | S9 | — | pending | method resolved; owner to name |
 | T21 | Execute X1 and negative X3 with real non-admin users | S3 | — | pending | needs third user; gate before multi-company |
 | T22 | Import the existing business specification as the authoritative source | S12 | inline | done | `docs/06-business-spec.md` |
 | T23 | Record conflicts between pilot scope and business spec | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
@@ -78,8 +78,8 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T25 | Resolve C2: advances and petty cash in or out of the first delivery | S12 | inline | done | deferred; P5/P6 retired |
 | T26 | Resolve C5 and add the two-level approval flow to the pilot | S12 | inline | done | P2a/P2b, two-stage custom states |
 | T27 | Resolve C3, C4, C6 in scope and acceptance criteria | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
-| T28 | Confirm whether funds por rendir are used today | S12 | — | pending | if yes, cancellation is blocked |
-| T29 | Decide how P8 data is obtained: build an exporter or archive read-only | S9 | — | pending | no tooling exists today |
+| T28 | Confirm whether funds por rendir are used today | S12 | inline | done | yes: `100.01.110.07` and `100.01.110.06` exist |
+| T29 | Decide how P8 data is obtained: build an exporter or archive read-only | S9 | inline | done | read-only exporter via documented API, or their own export |
 
 ## Log
 
@@ -145,6 +145,12 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   stays blocked while funds or history are uncovered, and the two-stage approval is
   now the largest technical risk. Rejected `hr_expense_tier_validation` for the
   chain because it cannot express two business stages with restart semantics.
+- **L16** — 2026-11-16: autonomous resolution run. Evidence found: funds and petty
+  cash accounts exist (including Fondo Fijo SAT), so cancellation is blocked; no OCR
+  credits visible; no expense categories configured; SAT analytic account exists;
+  bank journals inventoried; both pilot users already licensed. Resolutions recorded
+  in `docs/07-resolved-findings.md`. The objective was corrected: the current phase
+  is technical viability plus a decision on funds and history, not cancellation.
 - **L15** — 2026-11-16: task table cleaned after the resolutions. T6 dropped (tier
   validation rejected), T7/T8 deferred (advances and petty cash), T11 reworded to
   technical pilot, T29 added for the P8 data route.

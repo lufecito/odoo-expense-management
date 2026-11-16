@@ -201,9 +201,13 @@ X3 path stay uncovered and the gate remains open.
 Removed from the pilot, matching the business specification. Accounting must
 approve the treatment before they are built.
 
-**Consequence:** if the company uses fundos por rendir today, **Rindegastos cannot
+**Consequence:** if the company uses funds por rendir today, **Rindegastos cannot
 be cancelled** until that process has a replacement. This must be confirmed with
 Finance (D20) before any notice is given.
+
+**Confirmed on 2026-11-16:** the accounts `100.01.110.07 Fondos por Rendir` and
+`100.01.110.06 Fondo Fijo SAT` exist. Funds are in use, so **cancellation is
+blocked** under the current scope. See `docs/07-resolved-findings.md`.
 
 ### C3 — WhatsApp → **manual intake is in scope**
 
