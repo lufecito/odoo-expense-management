@@ -80,6 +80,10 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T27 | Resolve C3, C4, C6 in scope and acceptance criteria | S12 | inline | done | `docs/00-scope-pilot.md` §7 |
 | T28 | Confirm whether funds por rendir are used today | S12 | inline | done | yes: `100.01.110.07` and `100.01.110.06` exist |
 | T29 | Decide how P8 data is obtained: build an exporter or archive read-only | S9 | inline | done | read-only exporter via documented API, or their own export |
+| T30 | Record named verifiers and data-entry roles with instance evidence | S12 | inline | done | `docs/08-roles.md` |
+| T31 | Create Katherine Catalán's employee record in the pilot company | S3 | — | pending | user 148 exists; no employee |
+| T32 | Align pilot company: company 1 users versus company 5 verifiers | S3 | — | pending | D21 |
+| T33 | Build department or expense-manager routing | S3 | — | pending | only one department exists today |
 
 ## Log
 
@@ -145,6 +149,13 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   stays blocked while funds or history are uncovered, and the two-stage approval is
   now the largest technical risk. Rejected `hr_expense_tier_validation` for the
   chain because it cannot express two business stages with restart semantics.
+- **L17** — 2026-11-16: roles named. Verifiers Hecdaly Corzo (user 40, employee 11)
+  and Katherine Catalán (user 148, **no employee record**); data entry by Transport
+  executives plus the technical area, which has no Odoo users. Four gaps recorded in
+  `docs/08-roles.md`: missing employee record, verifiers in company 5 while pilot
+  users are in company 1, no Transport or technical department exists, and the
+  technical area cannot enter data without accounts. Default adopted: digitizer model
+  (executives enter on behalf of technicians) per the business specification.
 - **L16** — 2026-11-16: autonomous resolution run. Evidence found: funds and petty
   cash accounts exist (including Fondo Fijo SAT), so cancellation is blocked; no OCR
   credits visible; no expense categories configured; SAT analytic account exists;

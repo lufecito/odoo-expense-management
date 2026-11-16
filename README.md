@@ -17,6 +17,7 @@ existing Odoo 18 Enterprise instance (`ipam-master`).
 | `docs/05-substitution-matrix.md` | Rindegastos function by function, with disposition |
 | `docs/06-business-spec.md` | Imported business specification (authoritative for process and roles) |
 | `docs/07-resolved-findings.md` | Evidence-based resolutions and what remains human-owned |
+| `docs/08-roles.md` | Named owners, data-entry model and role gaps |
 | `odd/tasks/expense-management.md` | Working feature document and log |
 
 ## Ground rules
