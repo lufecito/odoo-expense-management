@@ -35,7 +35,7 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
 | T2 | Architecture decision: extend versus duplicate | S2 | inline | done | `docs/01-architecture.md` |
 | T3 | Pilot scope and acceptance criteria | S3, S4 | inline | done | `docs/00-scope-pilot.md` |
 | T4 | Open decisions register | S5 | inline | done | `docs/03-open-decisions.md` |
-| T5 | Resolve D1/D2: staging and deployment procedure | S5 | blocked | pending | owner: host administrator |
+| T5 | Resolve D1/D2: staging and deployment procedure | S5 | blocked | request prepared | `docs/04-staging-request.md`, to be sent by owner |
 | T6 | Evaluate `hr_expense_tier_validation` on 18.0 | S7 | — | pending | blocked by T5 |
 | T7 | Evaluate `hr_expense_advance_clearing` (three clearing scenarios) | S7 | — | pending | blocked by T5 |
 | T8 | Evaluate `hr_expense_petty_cash` | S7 | — | pending | blocked by T5 |
@@ -75,3 +75,9 @@ Test runner: Odoo 18 test suite (`--test-tags`), pending staging availability.
   with its consequence. They become explicit gates before multi-company rollout
   and before notice is given to Rindegastos. Exit criteria rewritten so a
   success cannot be declared for the group on single-company evidence.
+- **L9** — 2026-11-16: local staging ruled out for now. The machine has no
+  Docker, no Podman and no PostgreSQL, and ships Python 3.14, which Odoo 18 does
+  not support. A local Odoo would require installing a system stack with root
+  privileges and would still not reproduce the Chilean localization, SII modules
+  or 15-company setup. Formal staging request written instead:
+  `docs/04-staging-request.md`.

@@ -13,6 +13,7 @@ existing Odoo 18 Enterprise instance (`ipam-master`).
 | `docs/01-architecture.md` | Design decision and module boundary |
 | `docs/02-verified-baseline.md` | Facts read from the live instance |
 | `docs/03-open-decisions.md` | Decisions blocked on owners outside engineering |
+| `docs/04-staging-request.md` | Formal staging request to the host administrator |
 | `odd/tasks/expense-management.md` | Working feature document and log |
 
 ## Ground rules
